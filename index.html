@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	[ng-cloak]{
+		display: none;
+	}
+	table{
+		border:1px solid #ccc;
+		border-collapse: collapse;
+		margin: 10px;
+	}
+	table tr,th,td{
+		border: 1px solid #ccc;
+		padding: 12px;
+	}
+	img{
+		width: 150px;
+	}
+</style>
+<body ng-cloak ng-controller="shopCar">
+	<table>
+		<tr>
+			<th>商品</th>
+			<th>数量</th>
+			<th>单价</th>
+			<th>操作</th>
+		</tr>
+		<tr ng-repeat="item in shop">
+			<td><img ng-src="{{ item.img }}"></td>
+			<td>
+				<span><button ng-click="recus($index)">-</button></span>
+				<span>{{ item.num }}</span>
+				<span><button ng-click="add($index)">+</button></span>
+			</td>
+			<td>{{ item.pirce | currency:"￥" }}</td>
+			<td><button>Delete</button></td>
+		</tr>
+	</table>
+	<div class="footer">
+		<p>总数量:<span>{{ sums() }}</span></p>
+		<p>总价格:<span>{{ getpirces() }}</span></p>
+	</div>
+	<script src="js/angular.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
